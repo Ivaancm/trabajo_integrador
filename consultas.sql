@@ -1,14 +1,14 @@
 -- Consulta de todos los libros
-select * from Libros;
+select * from libros;
 
 -- Consulta de todos los autores
-select * from Autores;
+select * from autores;
 
 -- Consulta de todos los usuarios
-select * from Usuarios;
+select * from usuarios;
 
 -- Consulta de préstamos activos
-select * from Préstamos where fecha_devolucion is null;
+select * from prestamos where fecha_devolucion is null;
 
 -- Consulta de multas
-select * from Multas;
+select * from multas;
