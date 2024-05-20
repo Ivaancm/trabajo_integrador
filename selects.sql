@@ -12,3 +12,21 @@ select * from Libros where id_categoria = (select id_categoria from Categorías 
 
 -- Subselect para encontrar usuarios con préstamos activos
 select * from Usuarios where id_usuario in (select id_usuario from Préstamos where fecha_devolucion is null);
+
+-- seleccionar todos los autores
+select * from autores;
+
+-- seleccionar todas las categorías
+select * from categorias;
+
+-- seleccionar todos los libros
+select * from libros;
+
+-- seleccionar todos los usuarios
+select * from usuarios;
+
+-- seleccionar todos los préstamos
+select * from prestamos;
+
+-- seleccionar todas las multas
+select * from multas;

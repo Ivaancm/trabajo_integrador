@@ -52,3 +52,31 @@ select U.nombre, U.apellido, COUNT(P.id_prestamo) AS numero_prestamos
 from usuarios U
 join prestamos P on U.id_usuario = P.id_usuario
 group by U.nombre, U.apellido;
+
+-- seleccionar todos los libros escritos por 'leo tolstoy'
+select * from libros
+where id_autor = (select id_autor from autores where nombre = 'leo' and apellido = 'tolstoy');
+
+-- seleccionar todos los usuarios que tienen multas
+select * from usuarios
+where id_usuario in (select id_usuario from multas);
+
+-- seleccionar todos los libros prestados por 'juan perez'
+select * from libros
+where id_libro in (select id_libro from prestamos where id_usuario = (select id_usuario from usuarios where nombre = 'juan' and apellido = 'perez'));
+
+-- seleccionar todos los libros con el nombre del autor
+select l.id_libro, l.titulo, a.nombre, a.apellido
+from libros l
+join autores a on l.id_autor = a.id_autor;
+
+-- seleccionar todas las multas con el nombre del usuario
+select m.id_multa, m.monto, u.nombre, u.apellido
+from multas m
+join usuarios u on m.id_usuario = u.id_usuario;
+
+-- seleccionar todos los préstamos con el título del libro y el nombre del usuario
+select p.id_prestamo, l.titulo, u.nombre, u.apellido, p.fecha_prestamo, p.fecha_devolucion
+from prestamos p
+join libros l on p.id_libro = l.id_libro
+join usuarios u on p.id_usuario = u.id_usuario;
